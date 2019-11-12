@@ -57,7 +57,7 @@ RUN yum -y install iproute \
                    java-1.8.0-openjdk-devel.x86_64
 
 RUN mkdir -p /etc/ansible
-COPY ansible.cfg /etc/ansible/ansible.cfg
+ADD ansible.cfg /etc/ansible/ansible.cfg
 ENV ANSIBLE_CONFIG /etc/ansible/ansible.cfg
 
 
