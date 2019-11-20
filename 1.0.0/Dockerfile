@@ -32,7 +32,8 @@ RUN curl -L https://bootstrap.pypa.io/get-pip.py | python && \
     pip install cryptography && \
     pip install git+https://github.com/ansible/ansible.git@$ANSIBLE_VERSION && \
     pip install boto && \
-    pip install pywinrm 
+    pip install pywinrm && \
+    pip install shyaml 
 
 # install ruby & serverspec
 ENV RBENV_ROOT /root/.rbenv
