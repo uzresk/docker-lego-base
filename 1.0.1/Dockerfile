@@ -2,10 +2,20 @@ FROM centos:centos7
 
 LABEL maintainer "uzresk"
 
-ARG ANSIBLE_VERSION=v2.7.5
+ARG ANSIBLE_VERSION=2.9.2
+
+RUN echo -e "[AdoptOpenJDK]\n\
+name=AdoptOpenJDK\n\
+baseurl=http://adoptopenjdk.jfrog.io/adoptopenjdk/rpm/centos/7/x86_64\n\
+enabled=1\n\
+gpgcheck=1\n\
+gpgkey=https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public\n\
+" >> /etc/yum.repos.d/adoptopenjdk.repo
 
 RUN yum -y install epel-release \
-                   python-devel.x86_64 \
+                   python36 \
+                   python36-pip \
+                   python36-devel \
                    gcc-c++ \
                    gcc \
                    bzip2 \
@@ -22,21 +32,19 @@ RUN yum -y install epel-release \
                    openssl-devel \
                    iproute \
                    unzip \
-                   java-1.8.0-openjdk.x86_64 && \
+                   adoptopenjdk-8-hotspot.x86_64 && \
                    rm -rf /var/cache/yum/* && \
                    yum clean all
 
 # install ansible
-RUN curl -L https://bootstrap.pypa.io/get-pip.py | python && \
-    pip install --upgrade pip && \
-    pip install cryptography && \
-    pip install git+https://github.com/ansible/ansible.git@$ANSIBLE_VERSION && \
-    pip install boto && \
-    pip install pywinrm && \
-    pip install shyaml && \
-    pip install xlrd && \
-    pip install pandas && \
-    pip install PyVmomi
+RUN pip3.6 install cryptography && \
+    pip3.6 install ansible==$ANSIBLE_VERSION && \
+    pip3.6 install boto && \
+    pip3.6 install pywinrm && \
+    pip3.6 install shyaml && \
+    pip3.6 install xlrd && \
+    pip3.6 install pandas && \
+    pip3.6 install PyVmomi
 
 # install ruby & serverspec
 ENV RBENV_ROOT /root/.rbenv
