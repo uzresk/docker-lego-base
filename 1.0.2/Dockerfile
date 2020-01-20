@@ -36,7 +36,7 @@ RUN yum -y install epel-release \
                    rm -rf /var/cache/yum/* && \
                    yum clean all
 
-# install ansible
+# install Python packages 
 RUN pip3.6 install cryptography && \
     pip3.6 install ansible==$ANSIBLE_VERSION && \
     pip3.6 install boto && \
@@ -44,9 +44,10 @@ RUN pip3.6 install cryptography && \
     pip3.6 install shyaml && \
     pip3.6 install xlrd && \
     pip3.6 install pandas && \
-    pip3.6 install PyVmomi
+    pip3.6 install PyVmomi && \
+    pip3.6 install junit2html
 
-# install ruby & serverspec
+# install ruby packages
 ENV RBENV_ROOT /root/.rbenv
 RUN git clone https://github.com/rbenv/rbenv.git $RBENV_ROOT && \
     git clone https://github.com/sstephenson/ruby-build.git $RBENV_ROOT/plugins/ruby-build
