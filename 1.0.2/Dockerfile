@@ -61,7 +61,8 @@ RUN rbenv install 2.4.0 && \
                 winrm \
                 ansible-vault \
                 highline \
-                nokogiri
+                nokogiri \
+                inspec-bin
 
 # set locale ja_JP.UTF-8, timezone
 RUN localedef -v -c -i ja_JP -f UTF-8 ja_JP.UTF-8; echo "";
