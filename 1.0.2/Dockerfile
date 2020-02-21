@@ -45,7 +45,8 @@ RUN pip3.6 install cryptography && \
     pip3.6 install xlrd && \
     pip3.6 install pandas && \
     pip3.6 install PyVmomi && \
-    pip3.6 install junit2html
+    pip3.6 install junit2html && \
+    pip3.6 install tinydb
 
 # install ruby packages
 ENV RBENV_ROOT /root/.rbenv
