@@ -45,7 +45,8 @@ RUN pip3.6 install cryptography && \
     pip3.6 install xlrd && \
     pip3.6 install pandas && \
     pip3.6 install PyVmomi && \
-    pip3.6 install junit2html
+    pip3.6 install junit2html && \
+    pip3.6 install tinydb
 
 # install ruby packages
 ENV RBENV_ROOT /root/.rbenv
@@ -60,8 +61,7 @@ RUN rbenv install 2.4.0 && \
                 winrm \
                 ansible-vault \
                 highline \
-                nokogiri \
-                inspec-bin
+                nokogiri
 
 # set locale ja_JP.UTF-8, timezone
 RUN localedef -v -c -i ja_JP -f UTF-8 ja_JP.UTF-8; echo "";
