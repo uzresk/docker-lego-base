@@ -48,7 +48,8 @@ RUN pip3.6 install cryptography && \
     pip3.6 install PyVmomi && \
     pip3.6 install junit2html && \
     pip3.6 install tinydb && \
-    pip3.6 install ansible-lint==$ANSIBLE_LINT_VERSION
+    pip3.6 install ansible-lint==$ANSIBLE_LINT_VERSION && \
+    pip3.6 install pylint
 
 # install ruby packages
 ENV RBENV_ROOT /root/.rbenv
