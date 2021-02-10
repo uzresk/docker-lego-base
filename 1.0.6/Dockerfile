@@ -38,7 +38,8 @@ RUN yum -y install epel-release \
                    yum clean all
 
 # install Python packages 
-RUN pip3.6 install cryptography && \
+RUN pip3.6 install --upgrade pip && \
+    pip3.6 install cryptography && \
     pip3.6 install ansible==$ANSIBLE_VERSION && \
     pip3.6 install boto && \
     pip3.6 install boto3 && \
@@ -66,9 +67,8 @@ RUN rbenv install 2.4.0 && \
                 winrm \
                 ansible-vault \
                 highline \
-                nokogiri \
-                inifile \
-                inspec-bin
+                nokogiri:"1.10.10" \
+                inifile
 
 # set locale ja_JP.UTF-8, timezone
 RUN localedef -v -c -i ja_JP -f UTF-8 ja_JP.UTF-8; echo "";
