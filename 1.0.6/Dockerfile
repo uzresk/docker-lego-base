@@ -84,4 +84,4 @@ command_warnings=False' > /etc/ansible/ansible.cfg
 ENV ANSIBLE_CONFIG /etc/ansible/ansible.cfg
 
 # install ansible module from galaxy
-ansible-galaxy collection install ansible.posix
+RUN ansible-galaxy collection install ansible.posix
